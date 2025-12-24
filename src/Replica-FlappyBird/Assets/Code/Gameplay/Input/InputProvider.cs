@@ -1,16 +1,19 @@
-﻿using Code.Gameplay.Movement;
+﻿using Code.Gameplay.Providers;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Zenject;
 
 namespace Code.Gameplay.Input
 {
   public class InputProvider : MonoBehaviour
   {
-    [SerializeField] private PlayerMovement _playerMovement;
+    private IPlayerProvider _playerProvider;
 
-    public void OnBurst(InputValue value)
-    {
-      _playerMovement.FlyingBurst();
-    }
+    [Inject]
+    public void Construct(IPlayerProvider provider) => 
+      _playerProvider = provider;
+
+    public void OnBurst(InputValue value) => 
+      _playerProvider.Movement.FlyingBurst();
   }
 }
