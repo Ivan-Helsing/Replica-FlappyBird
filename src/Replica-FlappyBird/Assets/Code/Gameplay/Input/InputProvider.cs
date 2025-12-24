@@ -14,6 +14,6 @@ namespace Code.Gameplay.Input
       _playerProvider = provider;
 
     public void OnBurst(InputValue value) => 
-      _playerProvider.Movement.FlyingBurst();
+      _playerProvider.PlayerMovement.FlyingBurst();
   }
 }

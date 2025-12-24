@@ -1,9 +1,9 @@
-﻿using Code.Gameplay.Movement;
+﻿using Code.Gameplay.Player;
 
 namespace Code.Gameplay.Providers
 {
   public interface IPlayerProvider
   {
-    IPlayerMovement Movement { get; }
+    IPlayerMovement PlayerMovement { get; }
   }
 }

@@ -1,4 +1,4 @@
-﻿namespace Code.Gameplay.Movement
+﻿namespace Code.Gameplay.Player
 {
   public interface IPlayerMovement
   {

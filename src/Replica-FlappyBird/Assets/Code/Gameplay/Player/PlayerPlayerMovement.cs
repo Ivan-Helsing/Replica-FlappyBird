@@ -2,9 +2,9 @@
 using UnityEngine;
 using Zenject;
 
-namespace Code.Gameplay.Movement
+namespace Code.Gameplay.Player
 {
-  public class PlayerMovement : MonoBehaviour, IPlayerMovement
+  public class PlayerPlayerMovement : MonoBehaviour, IPlayerMovement
   {
     [SerializeField] private Rigidbody2D _rigidbody;
     [SerializeField] private float _force;
