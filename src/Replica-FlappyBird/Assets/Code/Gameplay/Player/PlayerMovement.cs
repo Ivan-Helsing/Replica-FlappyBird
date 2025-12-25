@@ -4,7 +4,7 @@ using Zenject;
 
 namespace Code.Gameplay.Player
 {
-  public class PlayerPlayerMovement : MonoBehaviour, IPlayerMovement
+  public class PlayerMovement : MonoBehaviour, IPlayerMovement
   {
     [SerializeField] private Rigidbody2D _rigidbody;
     [SerializeField] private float _force;
@@ -15,5 +15,8 @@ namespace Code.Gameplay.Player
 
     public void FlyingBurst() => 
       _rigidbody.linearVelocity = Vector2.up * _force;
+
+    public void ActivateGravity() => 
+      _rigidbody.gravityScale = 1f;
   }
 }

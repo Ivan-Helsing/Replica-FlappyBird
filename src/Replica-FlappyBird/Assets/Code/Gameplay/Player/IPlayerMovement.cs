@@ -3,5 +3,6 @@
   public interface IPlayerMovement
   {
     void FlyingBurst();
+    void ActivateGravity();
   }
 }

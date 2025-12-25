@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Code.Infrastructure.Services.Time;
+using UnityEngine;
+using Zenject;
 
 namespace Code.Gameplay.Road
 {
@@ -6,8 +8,13 @@ namespace Code.Gameplay.Road
   {
     [SerializeField] private Vector3 _direction;
     [SerializeField] private float _speed;
+    private ITimeService _time;
 
-    private void FixedUpdate() => 
-      transform.Translate(_direction * _speed);
+    [Inject]
+    public void Construct(ITimeService time) => 
+      _time = time;
+
+    private void Update() => 
+      transform.Translate(_direction * _speed * _time.DeltaTime);
   }
 }

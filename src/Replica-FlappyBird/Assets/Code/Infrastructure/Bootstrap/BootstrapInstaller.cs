@@ -6,6 +6,7 @@ using Code.Infrastructure.Services.AssetsManagement;
 using Code.Infrastructure.Services.Coroutines;
 using Code.Infrastructure.Services.Scenes;
 using Code.Infrastructure.Services.States;
+using Code.Infrastructure.Services.Time;
 using Zenject;
 
 namespace Code.Infrastructure.Bootstrap
@@ -31,6 +32,7 @@ namespace Code.Infrastructure.Bootstrap
       Container.Bind<IGameStateMachine>().To<GameStateMachine>().AsSingle();
       Container.Bind<IAssetsProvider>().To<AssetsProvider>().AsSingle();
       Container.Bind<ISegmentFactory>().To<SegmentFactory>().AsSingle();
+      Container.Bind<ITimeService>().To<TimeService>().AsSingle();
     }
 
     private void BindGameplayServices()

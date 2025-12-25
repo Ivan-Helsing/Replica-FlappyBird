@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Code.Gameplay.Road.Movement
   _direction: {x: -1, y: 0, z: 0}
-  _speed: 0.025
+  _speed: 1.5
 --- !u!114 &6351713033131799593
 MonoBehaviour:
   m_ObjectHideFlags: 0
