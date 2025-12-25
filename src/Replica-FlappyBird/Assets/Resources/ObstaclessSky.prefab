@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5964781023934870690}
-  - component: {fileID: 8334572549418553981}
   m_Layer: 0
   m_Name: ObstaclessSky
   m_TagString: Untagged
@@ -33,20 +32,6 @@ Transform:
   - {fileID: 5582515846581185660}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8334572549418553981
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5131228465188643459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06330cf2cf14496aad88280a26cac9b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Code.Gameplay.Road.SegmentMovement
-  _direction: {x: -1, y: 0, z: 0}
-  _speed: 0.02
 --- !u!1 &7436728817031336490
 GameObject:
   m_ObjectHideFlags: 0

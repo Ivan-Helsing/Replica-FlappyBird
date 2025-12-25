@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Code.Gameplay.UI
 {
-  public class Timer : MonoBehaviour
+  public class ScoreCounter : MonoBehaviour
   {
     [SerializeField] private TextMeshProUGUI _timerText;
     private float _currentTime;

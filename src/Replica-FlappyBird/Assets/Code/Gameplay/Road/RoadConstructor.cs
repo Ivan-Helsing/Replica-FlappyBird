@@ -1,35 +1,53 @@
-﻿using System.Collections.Generic;
+﻿using Code.Gameplay.Road.Factory;
 using UnityEngine;
+using Zenject;
+using Random = UnityEngine.Random;
 
 namespace Code.Gameplay.Road
 {
   public class RoadConstructor : MonoBehaviour
   {
-    [SerializeField] private float _lastPositionY;
-    [SerializeField] private Segment _segmentPrefab;
-    
-    private readonly List<Segment> _segments = new(16);
+    private Segment[] _segments = new Segment[2];
+    private int _currentSegment;
+    private ISegmentFactory _segmentFactory;
+
+    private const float MaxY = 3.5f;
+
+    [Inject]
+    public void Construct(ISegmentFactory segmentFactory) =>
+      _segmentFactory = segmentFactory;
 
     private void Start()
     {
-      for (int i = 0; i < _segments.Count; i++)
-      {
-        _segments[i].PlaceColumnsAt(RandomPoint());
-      }
+      _segments[0] = _segmentFactory.CreateSegment(at: new Vector3(4, 0, 0), transform);
+      _segments[0].PlaceColumnsAt(RandomYPoint());
+      
+      _segments[1] = _segmentFactory.CreateSegment(at: new Vector3(8, 0, 0), transform);
+      _segments[1].PlaceColumnsAt(RandomYPoint());
     }
 
-    private Vector3 RandomPoint() => 
-      new(0f, RandomOperator() * _lastPositionY + RandomModificator(), 0f);
-
-    private float RandomModificator() => 
-      Random.Range(0, 5f);
-
-    private int RandomOperator()
+    private void FixedUpdate()
     {
-      int i = Random.Range(0, 1);
-      if (i == 0)
-        return i - 1;
-      return i;
+      if (_segments[_currentSegment].transform.position.x > -4f)
+        return;
+
+      _segments[_currentSegment].transform.position = new Vector3(4f, 0, 0);
+      _segments[_currentSegment].PlaceColumnsAt(RandomYPoint());
+
+      if (_currentSegment == 1)
+        _currentSegment = 0;
+      else
+        _currentSegment++;
+    }
+
+    private Vector3 RandomYPoint() => 
+      new(0f, RandomizeY(), 0f);
+
+    private float RandomizeY()
+    {
+      float y = Random.Range(-MaxY, MaxY);
+
+        return y;
     }
   }
 }

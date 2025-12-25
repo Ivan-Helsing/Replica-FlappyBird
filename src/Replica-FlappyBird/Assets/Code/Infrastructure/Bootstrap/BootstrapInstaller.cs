@@ -1,4 +1,6 @@
 using Code.Gameplay.Providers;
+using Code.Gameplay.Road.Factory;
+using Code.Infrastructure.Services.AssetsManagement;
 using Code.Infrastructure.Services.Coroutines;
 using Code.Infrastructure.Services.Scenes;
 using Code.Infrastructure.Services.States;
@@ -25,6 +27,8 @@ namespace Code.Infrastructure.Bootstrap
     {
       Container.Bind<ISceneLoader>().To<SceneLoader>().AsSingle();
       Container.Bind<IGameStateMachine>().To<GameStateMachine>().AsSingle();
+      Container.Bind<IAssetsProvider>().To<AssetsProvider>().AsSingle();
+      Container.Bind<ISegmentFactory>().To<SegmentFactory>().AsSingle();
     }
 
     private void BindGameplayServices() => 

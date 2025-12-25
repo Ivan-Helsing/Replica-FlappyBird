@@ -7,6 +7,6 @@ namespace Code.Gameplay.Road
     [SerializeField] private GameObject _columns;
 
     public void PlaceColumnsAt(Vector3 position) => 
-      transform.position = position;
+      transform.position += position;
   }
 }
