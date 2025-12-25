@@ -7,9 +7,7 @@ namespace Code.Gameplay.Road
     [SerializeField] private Vector3 _direction;
     [SerializeField] private float _speed;
 
-    private void FixedUpdate()
-    {
+    private void FixedUpdate() => 
       transform.Translate(_direction * _speed);
-    }
   }
 }

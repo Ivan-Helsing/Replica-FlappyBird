@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2262153598753741924}
   - component: {fileID: 3691647253685161537}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: bird101
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 425837523131154929}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.75, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -102,8 +102,9 @@ GameObject:
   - component: {fileID: 3057885460414926129}
   - component: {fileID: 4442520344762770293}
   - component: {fileID: 2702083511373908125}
+  - component: {fileID: 2100483767890352256}
   - component: {fileID: 7794088565389554654}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,6 +168,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Code.Gameplay.Movement.PlayerMovement
   _rigidbody: {fileID: 4442520344762770293}
   _force: 5
+--- !u!114 &2100483767890352256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065695782904449230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee7bcb36515b4633ba51c5781b88d158, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Code.Gameplay.Player.PlayerCollisions
 --- !u!70 &7794088565389554654
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -201,6 +214,6 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.7351277, y: -0.054315217}
-  m_Size: {x: 0.68188745, y: 0.419172}
+  m_Offset: {x: 0.022197898, y: -0.054315306}
+  m_Size: {x: 0.6913382, y: 0.41917986}
   m_Direction: 1

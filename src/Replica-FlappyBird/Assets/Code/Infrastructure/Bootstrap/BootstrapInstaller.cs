@@ -1,5 +1,7 @@
 using Code.Gameplay.Providers;
 using Code.Gameplay.Road.Factory;
+using Code.Gameplay.Services;
+using Code.Gameplay.UI.Service;
 using Code.Infrastructure.Services.AssetsManagement;
 using Code.Infrastructure.Services.Coroutines;
 using Code.Infrastructure.Services.Scenes;
@@ -31,7 +33,11 @@ namespace Code.Infrastructure.Bootstrap
       Container.Bind<ISegmentFactory>().To<SegmentFactory>().AsSingle();
     }
 
-    private void BindGameplayServices() => 
+    private void BindGameplayServices()
+    {
       Container.BindInterfacesTo<PlayerProvider>().AsSingle();
+      Container.Bind<IUIService>().To<UIService>().AsSingle();
+      Container.Bind<IArbiterService>().To<ArbiterService>().AsSingle();
+    }
   }
 }

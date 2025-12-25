@@ -41,13 +41,9 @@ namespace Code.Gameplay.Road
     }
 
     private Vector3 RandomYPoint() => 
-      new(0f, RandomizeY(), 0f);
+      new(0f, Randomize(), 0f);
 
-    private float RandomizeY()
-    {
-      float y = Random.Range(-MaxY, MaxY);
-
-        return y;
-    }
+    private float Randomize() => 
+      Random.Range(-MaxY, MaxY);
   }
 }
