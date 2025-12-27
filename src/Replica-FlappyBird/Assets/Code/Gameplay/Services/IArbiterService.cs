@@ -1,4 +1,6 @@
-﻿namespace Code.Gameplay.Services
+﻿using Code.Gameplay.Player;
+
+namespace Code.Gameplay.Services
 {
   public interface IArbiterService
   {
@@ -8,5 +10,6 @@
     void AddScore();
     void Loosing();
     void SaveHighScore();
+    void SetPlayerMovement(PlayerMovement playerMovement);
   }
 }

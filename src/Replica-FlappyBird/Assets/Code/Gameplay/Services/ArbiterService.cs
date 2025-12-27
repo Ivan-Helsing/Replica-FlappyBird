@@ -1,4 +1,5 @@
-﻿using Code.Gameplay.UI.Service;
+﻿using Code.Gameplay.Player;
+using Code.Gameplay.UI.Service;
 using Code.Infrastructure.Services.Time;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ namespace Code.Gameplay.Services
 
     private readonly IUIService _ui;
     private readonly ITimeService _time;
+    private PlayerMovement _player;
 
     public ArbiterService(IUIService ui, ITimeService time)
     {
@@ -22,7 +24,7 @@ namespace Code.Gameplay.Services
     public int HighScore => _highScore;
     public int CurrentScore => _currentScore;
 
-    public void LoadHighScore() => 
+    public void LoadHighScore() =>
       _highScore = PlayerPrefs.GetInt(key: HighScoreKey, 0);
 
     public void SaveHighScore()
@@ -42,6 +44,10 @@ namespace Code.Gameplay.Services
       SaveHighScore();
       _time.StopTime();
       _ui.ShowLooseWindow();
+      _player.DisableMovement();
     }
+
+    public void SetPlayerMovement(PlayerMovement playerMovement) =>
+      _player = playerMovement;
   }
 }
