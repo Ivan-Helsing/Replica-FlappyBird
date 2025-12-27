@@ -2,11 +2,11 @@
 {
   public interface IArbiterService
   {
-    int MaxScore { get; }
+    int HighScore { get; }
     int CurrentScore { get; }
-    void InitMaxScore();
-    void SaveMaxScore();
+    void LoadHighScore();
     void AddScore();
     void Loosing();
+    void SaveHighScore();
   }
 }

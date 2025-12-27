@@ -1,37 +1,51 @@
 ﻿using Code.Gameplay.UI.Service;
+using Code.Infrastructure.Services.Time;
 using UnityEngine;
 
 namespace Code.Gameplay.Services
 {
   public class ArbiterService : IArbiterService
   {
-    private const string MaxScoreKey = "MaxScore";
+    private const string HighScoreKey = "HighScore";
     private int _currentScore;
-    private int _maxScore;
-    
-    private readonly IUIService _ui;
+    private int _highScore;
 
-    public ArbiterService(IUIService ui)
+    private readonly IUIService _ui;
+    private readonly ITimeService _time;
+
+    public ArbiterService(IUIService ui, ITimeService time)
     {
       _ui = ui;
+      _time = time;
     }
 
-    public int MaxScore => _maxScore;
+    public int HighScore => _highScore;
     public int CurrentScore => _currentScore;
 
-    public void InitMaxScore() => 
-      PlayerPrefs.SetInt(key: MaxScoreKey, _maxScore);
-
-    public void SaveMaxScore()
+    public void LoadHighScore()
     {
-      if(_maxScore < _currentScore)
-        PlayerPrefs.SetInt(MaxScoreKey, _currentScore);
+      _highScore = PlayerPrefs.GetInt(key: HighScoreKey, 0);
+      Debug.Log("Loading high score");
     }
 
-    public void AddScore() => 
-      _currentScore ++;
+    public void SaveHighScore()
+    {
+      if (_highScore < _currentScore)
+      {
+        _highScore = _currentScore;
+        PlayerPrefs.SetInt(HighScoreKey, _currentScore);
+        Debug.Log("Saving high score");
+      }
+    }
 
-    public void Loosing() => 
+    public void AddScore() =>
+      _currentScore++;
+
+    public void Loosing()
+    {
+      SaveHighScore();
+      _time.StopTime();
       _ui.ShowLooseWindow();
+    }
   }
 }

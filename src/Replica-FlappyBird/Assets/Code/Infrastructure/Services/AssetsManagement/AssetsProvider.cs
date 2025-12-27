@@ -1,4 +1,5 @@
 ﻿using Code.Gameplay.Road;
+using Code.Gameplay.UI.Windows;
 using UnityEngine;
 
 namespace Code.Infrastructure.Services.AssetsManagement
@@ -9,5 +10,8 @@ namespace Code.Infrastructure.Services.AssetsManagement
     {
       return Resources.Load<Segment>(AssetPath.Segment);
     }
+
+    public LoosingWindow LoadLoosingWindow() => 
+      Resources.Load<LoosingWindow>(AssetPath.LoosingWindow);
   }
 }

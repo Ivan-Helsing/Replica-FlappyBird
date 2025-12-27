@@ -7,12 +7,10 @@ namespace Code.Infrastructure.Services.States
   {
     private readonly Dictionary<Type, IState> _states = new();
     private IExitableState _activeState;
-
-    public GameStateMachine()
-    {
-      _states.Add(typeof(BootstrapState), new BootstrapState());
-    }
     
+    public GameStateMachine(IStateFactory stateFactory) => 
+      _states.Add(typeof(BootstrapState), stateFactory.Create<BootstrapState>());
+
     public void Enter<TState>() where TState : class, IState
     {
       _activeState?.Exit();
