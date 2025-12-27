@@ -22,11 +22,8 @@ namespace Code.Gameplay.Services
     public int HighScore => _highScore;
     public int CurrentScore => _currentScore;
 
-    public void LoadHighScore()
-    {
+    public void LoadHighScore() => 
       _highScore = PlayerPrefs.GetInt(key: HighScoreKey, 0);
-      Debug.Log("Loading high score");
-    }
 
     public void SaveHighScore()
     {
@@ -34,7 +31,6 @@ namespace Code.Gameplay.Services
       {
         _highScore = _currentScore;
         PlayerPrefs.SetInt(HighScoreKey, _currentScore);
-        Debug.Log("Saving high score");
       }
     }
 
