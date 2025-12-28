@@ -13,5 +13,8 @@ namespace Code.Infrastructure.Services.States
 
     public T Create<T>() where T : IState => 
       _instantiator.Instantiate<T>();
+
+    public T Create<T>(params object[] args) where T : IState => 
+      _instantiator.Instantiate<T>(args);
   }
 }

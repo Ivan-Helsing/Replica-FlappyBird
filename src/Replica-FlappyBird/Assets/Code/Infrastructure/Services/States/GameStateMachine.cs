@@ -8,8 +8,12 @@ namespace Code.Infrastructure.Services.States
     private readonly Dictionary<Type, IState> _states = new();
     private IExitableState _activeState;
     
-    public GameStateMachine(IStateFactory stateFactory) => 
-      _states.Add(typeof(BootstrapState), stateFactory.Create<BootstrapState>());
+    public GameStateMachine(IStateFactory stateFactory)
+    {
+      _states.Add(typeof(BootstrapState), stateFactory.Create<BootstrapState>(this));
+      _states.Add(typeof(GameplayState), stateFactory.Create<GameplayState>(this));
+      _states.Add(typeof(RestartState), stateFactory.Create<RestartState>(this));
+    }
 
     public void Enter<TState>() where TState : class, IState
     {

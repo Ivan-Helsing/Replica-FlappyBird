@@ -8,7 +8,12 @@ namespace Code.Infrastructure.Services.Scenes
 {
   public class SceneLoader : ISceneLoader
   {
-    private ICoroutineRunner _coroutineRunner;
+    private readonly ICoroutineRunner _coroutineRunner;
+
+    public SceneLoader(ICoroutineRunner coroutineRunner)
+    {
+      _coroutineRunner = coroutineRunner;
+    }
 
     public void LoadScene(string sceneName, Action onLoaded = null)
     {
