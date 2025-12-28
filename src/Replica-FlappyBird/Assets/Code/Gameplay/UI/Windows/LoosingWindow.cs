@@ -1,4 +1,5 @@
 ﻿using Code.Gameplay.Services;
+using Code.Infrastructure.Services.States;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,12 +14,22 @@ namespace Code.Gameplay.UI.Windows
     [SerializeField] private Button _restartButton;
     
     private IArbiterService _arbiter;
+    private IRestartStateLauncher _restartLauncher;
 
     [Inject]
-    public void Construct(IArbiterService arbiterService)
+    public void Construct(IArbiterService arbiterService, IRestartStateLauncher restart)
     {
       _arbiter = arbiterService;
+      _restartLauncher = restart;
     }
+
+    private void Awake()
+    {
+      _restartButton.onClick.AddListener(GameRestart);
+    }
+
+    private void GameRestart() => 
+      _restartLauncher.MoveToRestartState();
 
     public void ShowScores()
     {

@@ -31,7 +31,7 @@ namespace Code.Infrastructure.Bootstrap
     {
       Container.Bind<ISceneLoader>().To<SceneLoader>().AsSingle();
       Container.Bind<IStateFactory>().To<StateFactory>().AsSingle();
-      Container.Bind<IGameStateMachine>().To<GameStateMachine>().AsSingle();
+      Container.BindInterfacesTo<GameStateMachine>().AsSingle();
       Container.Bind<IAssetsProvider>().To<AssetsProvider>().AsSingle();
       Container.Bind<ISegmentFactory>().To<SegmentFactory>().AsSingle();
       Container.Bind<ITimeService>().To<TimeService>().AsSingle();

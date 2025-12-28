@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Code.Infrastructure.Services.States
 {
-  public class GameStateMachine : IGameStateMachine
+  public class GameStateMachine : IGameStateMachine, IRestartStateLauncher
   {
     private readonly Dictionary<Type, IState> _states = new();
     private IExitableState _activeState;
@@ -11,10 +11,13 @@ namespace Code.Infrastructure.Services.States
     public GameStateMachine(IStateFactory stateFactory)
     {
       _states.Add(typeof(BootstrapState), stateFactory.Create<BootstrapState>(this));
-      _states.Add(typeof(GameplayState), stateFactory.Create<GameplayState>(this));
+      _states.Add(typeof(GameplayState), stateFactory.Create<GameplayState>());
       _states.Add(typeof(RestartState), stateFactory.Create<RestartState>(this));
     }
 
+    public void MoveToRestartState() => 
+      Enter<RestartState>();
+    
     public void Enter<TState>() where TState : class, IState
     {
       _activeState?.Exit();

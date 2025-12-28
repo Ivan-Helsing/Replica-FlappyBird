@@ -32,7 +32,7 @@ namespace Code.Gameplay.Services
       if (_highScore < _currentScore)
       {
         _highScore = _currentScore;
-        PlayerPrefs.SetInt(HighScoreKey, _currentScore);
+        PlayerPrefs.SetInt(HighScoreKey, _highScore);
       }
     }
 
@@ -45,7 +45,11 @@ namespace Code.Gameplay.Services
       _time.StopTime();
       _ui.ShowLooseWindow();
       _player.DisableMovement();
+      ResetCurrentScore();
     }
+
+    private void ResetCurrentScore() => 
+      _currentScore = 0;
 
     public void SetPlayerMovement(PlayerMovement playerMovement) =>
       _player = playerMovement;

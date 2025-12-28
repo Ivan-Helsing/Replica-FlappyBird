@@ -7,6 +7,7 @@ namespace Code.Gameplay.UI.Service
   {
     private readonly IUIFactory _factory;
     private RectTransform _uiRoot;
+    private bool _loosingStateEnabled;
 
     public UIService(IUIFactory factory) => 
       _factory = factory;
@@ -14,7 +15,16 @@ namespace Code.Gameplay.UI.Service
     public void BindRoot(RectTransform uiRoot) => 
       _uiRoot = uiRoot;
 
-    public void ShowLooseWindow() => 
-      _factory.CreateLoosingWindow(_uiRoot);
+    public void RestartLoosingState() => 
+      _loosingStateEnabled = false;
+
+    public void ShowLooseWindow()
+    {
+      if(!_loosingStateEnabled)
+      {
+        _factory.CreateLoosingWindow(_uiRoot);
+        _loosingStateEnabled = true;
+      }
+    }
   }
 }

@@ -6,5 +6,6 @@ namespace Code.Gameplay.UI.Service
   {
     void ShowLooseWindow();
     void BindRoot(RectTransform uiRoot);
+    void RestartLoosingState();
   }
 }
