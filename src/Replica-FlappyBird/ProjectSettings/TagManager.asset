@@ -41,6 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Cloud
+    uniqueID: 3542693343
+    locked: 0
   - name: Columns
     uniqueID: 3626664281
     locked: 0

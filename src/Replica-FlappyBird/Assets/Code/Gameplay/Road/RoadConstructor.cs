@@ -28,17 +28,29 @@ namespace Code.Gameplay.Road
 
     private void FixedUpdate()
     {
-      if (_segments[_currentSegment].transform.position.x > -4f)
+      if (SegmentInView())
         return;
 
-      _segments[_currentSegment].transform.position = new Vector3(4f, 0, 0);
-      _segments[_currentSegment].PlaceColumnsAt(RandomYPoint());
+      CurrentSegmentMovedAtFront();
+      UpdateCurrentSegmentIndex();
+    }
 
+    private void UpdateCurrentSegmentIndex()
+    {
       if (_currentSegment == 1)
         _currentSegment = 0;
       else
         _currentSegment++;
     }
+
+    private void CurrentSegmentMovedAtFront()
+    {
+      _segments[_currentSegment].transform.position = new Vector3(4f, 0, 0);
+      _segments[_currentSegment].PlaceColumnsAt(RandomYPoint());
+    }
+
+    private bool SegmentInView() => 
+      _segments[_currentSegment].transform.position.x > -4f;
 
     private Vector3 RandomYPoint() => 
       new(0f, Randomize(), 0f);
