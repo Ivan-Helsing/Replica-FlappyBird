@@ -1,4 +1,5 @@
-﻿using Code.Gameplay.Providers;
+﻿using Code.Gameplay.Animation;
+using Code.Gameplay.Providers;
 using Code.Gameplay.Services;
 using UnityEngine;
 using Zenject;
@@ -9,6 +10,7 @@ namespace Code.Gameplay.Player
   {
     [SerializeField] private Rigidbody2D _rigidbody;
     [SerializeField] private float _force;
+    [SerializeField] private PlayerAnimator _animator;
 
     private bool _disabled;
 
@@ -22,7 +24,10 @@ namespace Code.Gameplay.Player
     public void FlyingBurst()
     {
       if (!_disabled)
+      {
         _rigidbody.linearVelocity = Vector2.up * _force;
+        _animator.PlayFly();
+      }
     }
 
     public void ActivateGravity() =>

@@ -1,12 +1,5 @@
 fileFormatVersion: 2
-guid: f211384afa2e94b4fa6247ceda72555f
-AssetOrigin:
-  serializedVersion: 1
-  productId: 93903
-  packageName: Landscape Tiles & Birds (Free)
-  packageVersion: 1.0
-  assetPath: Assets/Pixel Bird/PNG/big block/Big Block03.png
-  uploadId: 199687
+guid: d3de76252a87b1941a35d06e7ddc5336
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

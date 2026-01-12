@@ -2,7 +2,7 @@
 {
   public static class AssetPath
   {
-    public const string Segment = "Segment";
+    public const string Segment = "Segments/Segment";
     public const string LoosingWindow = "UI/Loosing Window";
   }
 }
